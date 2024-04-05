@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FJWl7MSK4XnWN49jwmpCX/LdY5u4Qq/XlFaCTQD/3B8=",
+  "Hash": "VJCzjyVRH/bnhH0uFSL93mtihd4nQ4e/qmAJkKdcAYQ=",
   "Source": "ShopWebApplication",
   "BasePath": "_content/ShopWebApplication",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "ShopWebApplication\\wwwroot",
       "Source": "ShopWebApplication",
-      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\",
+      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplicaton\\wwwroot\\",
       "BasePath": "_content/ShopWebApplication",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\favicon.ico",
+      "Identity": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplicaton\\wwwroot\\favicon.ico",
       "SourceId": "ShopWebApplication",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\",
+      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplicaton\\wwwroot\\",
       "BasePath": "_content/ShopWebApplication",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MXD7PdQjixu8RAfnLaIxScsHPifduVa4jezv69lO4+J2Z5RVCH2Hj48w8eWNNj8PPIa6dZdpDUM5xVm4I07RSg==",
+  "dgSpecHash": "dzBBt229SoBThlwd/1I79WMo2y5jpAUDXVpp2Z5IfjWA51b6d0yX22vrxzHGurMrmCk4NiLrwW6KS04x18Rw2w==",
   "success": true,
-  "projectFilePath": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplication.csproj",
+  "projectFilePath": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplicaton\\ShopWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\123\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.13\\microsoft.aspnetcore.spaproxy.7.0.13.nupkg.sha512"
   ],

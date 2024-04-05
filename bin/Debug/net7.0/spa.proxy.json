@@ -2,7 +2,7 @@
 "SpaProxyServer": {
 "ServerUrl": "https://localhost:44472",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "C:\\vscodeprojects\\ShopWebApplication\\ClientApp\\",
+"WorkingDirectory": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplicaton\\ClientApp\\",
 "MaxTimeoutInSeconds": "120"
 }
 }
