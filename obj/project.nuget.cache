@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "MXD7PdQjixu8RAfnLaIxScsHPifduVa4jezv69lO4+J2Z5RVCH2Hj48w8eWNNj8PPIa6dZdpDUM5xVm4I07RSg==",
+  "success": true,
+  "projectFilePath": "C:\\vscodeprojects\\ShopWebApplication\\ShopWebApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\123\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.13\\microsoft.aspnetcore.spaproxy.7.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

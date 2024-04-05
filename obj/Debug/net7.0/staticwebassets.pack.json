@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.ShopWebApplication.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.ShopWebApplication.props",
+      "PackagePath": "build\\ShopWebApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.ShopWebApplication.props",
+      "PackagePath": "buildMultiTargeting\\ShopWebApplication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.ShopWebApplication.props",
+      "PackagePath": "buildTransitive\\ShopWebApplication.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

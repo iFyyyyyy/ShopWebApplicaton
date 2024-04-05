@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "FJWl7MSK4XnWN49jwmpCX/LdY5u4Qq/XlFaCTQD/3B8=",
+  "Source": "ShopWebApplication",
+  "BasePath": "_content/ShopWebApplication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ShopWebApplication\\wwwroot",
+      "Source": "ShopWebApplication",
+      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\",
+      "BasePath": "_content/ShopWebApplication",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\favicon.ico",
+      "SourceId": "ShopWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\vscodeprojects\\ShopWebApplication\\wwwroot\\",
+      "BasePath": "_content/ShopWebApplication",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    }
+  ]
+}
