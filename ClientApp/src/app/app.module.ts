@@ -22,6 +22,7 @@ import { ShopPageComponent } from './shop-page/shop-page.component';
 import { TableComponent } from './table/table.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {MatMenuModule} from '@angular/material/menu';
     FetchDataComponent,
     ShopPageComponent,
     TableComponent,
-
+      CartComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -54,6 +55,7 @@ import {MatMenuModule} from '@angular/material/menu';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'app-shop-page', component: ShopPageComponent },
+      { path: 'cart', component: CartComponent },
     ]),
     BrowserAnimationsModule
   ],

@@ -7,9 +7,10 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
+  urlJSON: string = '/assets/data-source.json';
+
   constructor(private http: HttpClient) { }
 
-  urlJSON: string = '/assets/data-source.json';
 
   getFirstDataJSON(){
     return this.http.get<Product[]>(this.urlJSON).pipe();

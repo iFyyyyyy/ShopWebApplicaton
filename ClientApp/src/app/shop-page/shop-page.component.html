@@ -4,13 +4,23 @@
   <h1 id="StoreLabel">Магазин</h1>
   <div>
       <button mat-icon-button color="gray" aria-label="icon" [matMenuTriggerFor]="beforeMenu">
-        <mat-icon matBadge="{{cartCounter}}" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon matBadge="{{cartStorage.length}}" matBadgeColor="warn">shopping_cart</mat-icon>
       </button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <li>
-        <span class="cartItem">Item 1</span>
-        <button mat-menu-item>Оплатить</button>
-      </li>
+        <mat-selection-list #cart>
+          <mat-list-item *ngFor="let p of cartStorage" >
+            <div matListItemTitle>{{p.product.name}}</div>
+            <div matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</div>
+            <div matListItemLine>{{p.product.price | currency: '₽ '}}</div>
+          </mat-list-item>
+          <mat-list-item *ngIf="cartStorage[0]">
+            <div matListItemTitle [routerLink]="['/cart']">В корзину</div>
+          </mat-list-item>
+
+          <mat-list-item disabled *ngIf="!cartStorage[0]">
+            <div  matListItemLine>Здесь пока что ничего нет.</div>
+          </mat-list-item>
+        </mat-selection-list>
 
       </mat-menu>
   </div>
