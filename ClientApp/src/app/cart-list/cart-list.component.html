@@ -1,9 +1,12 @@
 <mat-list class="mat-elevation-z8">
-  <mat-list-item *ngFor="let p of cartStorage">
-    <span matListItemTitle>{{p.product.name}}</span>
-    <span matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</span>
-    <span> {{p.product.price | currency: '₽ '}} </span>
-  </mat-list-item>
+  <div *ngFor="let p of cartStorage">
+
+    <mat-list-item>
+      <span matListItemTitle>{{p.product.name}}: {{p.count}} шт</span>
+      <span matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</span>
+      <span> {{p.product.price | currency: '₽ '}} </span>
+    </mat-list-item>
+  </div>
 
   <mat-list-item *ngIf="cartStorage[0]">Итого: {{totalCost | currency: '₽ '}} </mat-list-item>
   <mat-list-item *ngIf="cartStorage[0]">

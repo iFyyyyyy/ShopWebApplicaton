@@ -39,7 +39,7 @@ export class CartListComponent implements OnInit /*, OnDestroy*/ {
 
   countTotalCost(){
     this.cartStorage.forEach(product => {
-      this.totalCost += product.product.price;
+      this.totalCost += (product.product.price * product.count);
     });
   }
 

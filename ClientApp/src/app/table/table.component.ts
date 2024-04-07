@@ -36,10 +36,10 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFirstDataJSON();
     this.subs = this.cartService.cartItems$.subscribe((data: ProductState[]) => {
       this.cartStorage = data;
-  })
+    })
+    this.getFirstDataJSON();
   }
 
   applyFilter(event: Event) {
@@ -74,14 +74,22 @@ export class TableComponent implements OnInit {
   };
 
   setProductState(products: Product[]){
-    let productState: ProductState[] = [];
+    //debugger
+    let result: ProductState[] = [];
     products.forEach(product => {
-        if(localStorage.getItem(`CartItem:${product.id}`)){
-          productState.push(new ProductState(product, true));
-      }
-      else productState.push(new ProductState(product, false));
+      let found = this.cartStorage.some(productState => productState.product.name = product.name);
+        if(found){
+          result.push(new ProductState(product, true));
+        }
+        else {
+          result.push(new ProductState(product, false))
+        };
+        found = false;
     });
-    return productState;
+    return result;
   }
+
+
+
 
 }

@@ -4,6 +4,11 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ProductState } from 'src/app/modules/ProductState';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 
+interface Delivery {
+  deliveryType: string;
+}
+
+
 @Component({
   selector: 'app-order-page-stepper',
   templateUrl: './order-page-stepper.component.html',
@@ -18,34 +23,36 @@ import { CartServiceService } from 'src/app/service/cart-service.service';
 export class OrderPageStepperComponent implements OnInit {
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    name: ['', Validators.required],
     personalData: false,
+    phoneNumber: ['', Validators.required],
   });
+
   secondFormGroup = this._formBuilder.group({
-    //secondCtrl: ['', Validators.required],
   });
 
   thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: ['', Validators.required],
+    snils: ['', Validators.required],
   });
 
   fourthFormGroup = this._formBuilder.group({
-    //fourthCtrl: ['', Validators.required],
+    // delivery: ['', Validators.required],
   });
 
-  selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
+  deliveryControl = new FormControl<Delivery | null >(null, Validators.required);
 
-  selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
-
-  //matcher = new MyErrorStateMatcher();
+  delivery: Delivery[] = [
+    {deliveryType: 'Самовывоз'},
+    {deliveryType: 'Доставка почтой'},]
 
   isLinear = true;
   totalCost: number = 0;
+  sendingData: any;
 
   cartStorage: ProductState[];
 
 
-  constructor(private _formBuilder: FormBuilder,private readonly cartService: CartServiceService) {
+  constructor(private _formBuilder: FormBuilder, private readonly cartService: CartServiceService) {
     this.cartStorage = [];
   }
 
@@ -55,17 +62,25 @@ export class OrderPageStepperComponent implements OnInit {
     }
   }
 
-  MakeOrder(){}
+  showSendingData(){
+    let sendingData = [
+      this.firstFormGroup.value.name,
+      this.firstFormGroup.value.phoneNumber,
+      this.cartStorage,
+      this.thirdFormGroup.value,
+      this.deliveryControl.value];
+    this.sendingData = JSON.stringify(sendingData);
+    console.log(this.sendingData)
+  }
+
+  MakeOrder(){
+    console.log("sending...");
+  }
 
   countTotalCost(){
     this.cartStorage.forEach(product => {
-      this.totalCost += product.product.price;
+      this.totalCost += (product.product.price * product.count);
     });
   }
-
-  onClickShow(){
-    console.log(this.firstFormGroup);
-  }
-
 
 }
