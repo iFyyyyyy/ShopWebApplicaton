@@ -3,7 +3,9 @@ Simple app for shop operations, using @angular/material.
 О приложении:
 За основу был использован новый проект dotnet new angular
 Реализовано ТЗ, сутью которого является реализация Магазина (См. Вкладку: Магазин)
+
 Коммит v1.7: Версия frontend only
+
 Коммит v2.0+: Версия frontend + backend
 
 Как запустить:
