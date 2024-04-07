@@ -22,8 +22,11 @@ public class Product {
 
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Attributes attributes;
+    private Long price;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
+    @JoinColumn(name = "attributes_id", nullable = false)
+    private Attributes attr;
 
 
 }

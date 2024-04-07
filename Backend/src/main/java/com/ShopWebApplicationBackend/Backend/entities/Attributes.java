@@ -1,6 +1,9 @@
 package com.ShopWebApplicationBackend.Backend.entities;
 
 import javax.persistence.*;
+
+import com.ShopWebApplicationBackend.Backend.service.ProductService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
@@ -11,6 +14,8 @@ import lombok.*;
 @NoArgsConstructor
 public class Attributes {
 
+
+    @JsonIgnore
     @Id
     @GeneratedValue
     private Long id;
@@ -18,6 +23,10 @@ public class Attributes {
     private String color;
 
     private String format;
+
+    @JsonIgnore
+    @ManyToOne(fetch =  FetchType.LAZY)
+    private Product product;
 
 
 }

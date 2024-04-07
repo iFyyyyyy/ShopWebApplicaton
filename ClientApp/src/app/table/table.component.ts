@@ -57,6 +57,7 @@ export class TableComponent implements OnInit, OnDestroy {
   // Подгрузка прайс листа из JSON файла data-source из ТЗ
   getFirstDataJSON(){
     this.productService.getFirstDataJSON().subscribe((response: Product[])  => {
+      debugger
       this.dataSource = new MatTableDataSource<ProductState>(this.setProductState(response));
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
