@@ -1,6 +1,6 @@
 import { ProductState } from './../modules/ProductState';
 import { ProductService } from '../service/product-service.service';
-import { AfterViewInit, Component, OnInit, ViewChild, inject, } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, inject, } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', 'price', 'button'];
   dataSource: MatTableDataSource<ProductState>;
   products: ProductState[];
@@ -40,6 +40,10 @@ export class TableComponent implements OnInit {
       this.cartStorage = data;
     })
     this.getFirstDataJSON();
+  }
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
 
   applyFilter(event: Event) {
