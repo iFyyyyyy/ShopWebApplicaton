@@ -10,20 +10,11 @@ import { Product } from '../modules/Product';
 })
 export class CartComponent implements OnInit {
 
-  cartStorage: ProductState[];
 
-  newCartItem: ProductState;
-
-
-  constructor( private readonly cartService: CartServiceService) {
-    this.cartStorage = [];
-    this.newCartItem = new ProductState(new Product);
-  }
+  constructor() { }
 
 
 
-  ngOnInit() {
-    this.cartService.cartItems$.subscribe((res) => this.cartStorage = res)
-  }
+  ngOnInit() {}
 
 }

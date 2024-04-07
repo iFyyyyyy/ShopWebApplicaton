@@ -5,9 +5,9 @@ export class ProductState {
   inCart: boolean;
   count: number;
 
-  constructor(product: Product) {
+  constructor(product: Product, inCart: boolean) {
     this.product = product;
-    this.inCart = false;
+    this.inCart = inCart;
     this.count = 0;
   }
 

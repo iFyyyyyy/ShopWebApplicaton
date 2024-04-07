@@ -7,6 +7,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../modules/Product';
 import { CartServiceService } from '../service/cart-service.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -17,32 +18,28 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['name', 'price', 'button'];
   dataSource: MatTableDataSource<ProductState>;
   products: ProductState[];
-  cartItems: ProductState[];
+  cartStorage: ProductState[];
 
+  subs: Subscription = new Subscription;
+
+  cartCounter: number = 0;
   pageIndex: number = 0;
   pageSize: number = 5;
-
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-
-
   constructor(private productService: ProductService,  private readonly cartService: CartServiceService) {
     this.products = [];
-    this.cartItems = [];
+    this.cartStorage = [];
     this.dataSource = new MatTableDataSource(this.products);
-
-
-   }
+  }
 
   ngOnInit() {
     this.getFirstDataJSON();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.subs = this.cartService.cartItems$.subscribe((data: ProductState[]) => {
+      this.cartStorage = data;
+  })
   }
 
   applyFilter(event: Event) {
@@ -53,45 +50,38 @@ export class TableComponent implements OnInit {
     }
   }
 
-
   // Подгрузка прайс листа из JSON файла data-source из ТЗ
   getFirstDataJSON(){
     this.productService.getFirstDataJSON().subscribe((response: Product[])  => {
-
       this.dataSource = new MatTableDataSource<ProductState>(this.setProductState(response));
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+
     });
   }
 
   onClickAddToCart(productState: ProductState){
+    this.cartCounter++;
     productState.inCart = true;
     productState.count++;
-    localStorage.setItem(JSON.stringify(productState.product.id), JSON.stringify(productState));
+    localStorage.setItem(`CartItem:${this.cartCounter}`, JSON.stringify(productState));
     this.addToCart(productState);
-
-    //@inject;
   }
 
   public addToCart(productState: ProductState): void {
-        this.cartService.cartItems$.subscribe(data =>{
-          this.cartItems = data;
-        });
-        this.cartItems.push(productState);
-        this.cartService.setCartItems(this.cartItems);
+        this.cartStorage.push(productState);
+        this.cartService.setCartItems(this.cartStorage);
   };
-
-
 
   setProductState(products: Product[]){
     let productState: ProductState[] = [];
     products.forEach(product => {
-      productState.push(new ProductState(product));
+        if(localStorage.getItem(`CartItem:${product.id}`)){
+          productState.push(new ProductState(product, true));
+      }
+      else productState.push(new ProductState(product, false));
     });
     return productState;
   }
-
-
-
 
 }

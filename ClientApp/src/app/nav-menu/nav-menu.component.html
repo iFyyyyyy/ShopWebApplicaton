@@ -27,18 +27,40 @@
           >
             <a class="nav-link text-dark" [routerLink]="['/home']">Главная</a>
           </li>
+
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/app-shop-page']">Магазин</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/cart']">Корзина</a
-            >
+
+          <li class="nav-item">
+              <button class="navbar-icon"  mat-icon-button color="gray" aria-label="icon" [matMenuTriggerFor]="beforeMenu">
+                <mat-icon class="nav-item" matBadge="{{cartStorage.length}}" matBadgeColor="primary">add_shopping_cart</mat-icon>
+              </button>
+
+              <mat-menu #beforeMenu="matMenu" xPosition="before">
+                <mat-selection-list #cart>
+
+                  <mat-list-item *ngFor="let p of cartStorage">
+                    <div matListItemTitle>{{p.product.name}}</div>
+                    <div matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</div>
+                    <div matListItemLine>{{p.product.price | currency: '₽ '}}</div>
+                  </mat-list-item>
+
+                  <mat-list-item *ngIf="cartStorage[0]" matListItemTitle [routerLink]="['/cart']">
+                    <div>В корзину</div>
+                  </mat-list-item>
+
+                  <mat-list-item disabled *ngIf="!cartStorage[0]">
+                    <div  matListItemLine>Здесь пока что ничего нет.</div>
+                  </mat-list-item>
+                </mat-selection-list>
+              </mat-menu>
           </li>
-          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li> -->
+
+
+          <button class="navbar-icon"  mat-icon-button color="gray" aria-label="icon"  (click)="onClickClear()">
+            <mat-icon class="nav-item" matBadgeColor="warn">cached</mat-icon>
+          </button>
         </ul>
       </div>
     </div>

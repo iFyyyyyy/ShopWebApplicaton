@@ -1,0 +1,29 @@
+<mat-list class="mat-elevation-z8">
+  <mat-list-item *ngFor="let p of cartStorage">
+    <span matListItemTitle>{{p.product.name}}</span>
+    <span matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</span>
+    <span> {{p.product.price | currency: '₽ '}} </span>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="cartStorage[0]">Итого: {{totalCost | currency: '₽ '}} </mat-list-item>
+  <mat-list-item *ngIf="cartStorage[0]">
+    <div matListItemLine>
+      <button class="mat-button" mat-flat-button extended color="primary" [routerLink]="['/order']">
+        <mat-icon>shopping_basket</mat-icon>
+        Оформить заказ
+      </button>
+      <button mat-flat-button extended color="warn" (click)="onClickRemoveFromCart()">
+        <mat-icon>delete_foreve</mat-icon>
+        Очистить
+      </button>
+    </div>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="!cartStorage[0]">
+    <div  matListItemLine>Здесь пока что ничего нет.</div>
+  </mat-list-item>
+
+</mat-list>
+
+
+

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -23,6 +23,13 @@ import { TableComponent } from './table/table.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import { CartComponent } from './cart/cart.component';
+import { CartListComponent } from './cart-list/cart-list.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPageStepperComponent } from './order-page/order-page-stepper/order-page-stepper.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,7 +40,10 @@ import { CartComponent } from './cart/cart.component';
     FetchDataComponent,
     ShopPageComponent,
     TableComponent,
-      CartComponent
+    CartComponent,
+    CartListComponent,
+    OrderPageComponent,
+    OrderPageStepperComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,8 +66,15 @@ import { CartComponent } from './cart/cart.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'app-shop-page', component: ShopPageComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'order', component: OrderPageComponent },
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    //ErrorStateMatcher,
+    MatSelectModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

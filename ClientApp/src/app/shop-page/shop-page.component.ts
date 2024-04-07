@@ -14,12 +14,12 @@ export class ShopPageComponent implements OnInit {
 
   cartStorage: ProductState[];
 
-  newCartItem: ProductState;
+  //newCartItem: ProductState;
 
 
   constructor( private readonly cartService: CartServiceService) {
     this.cartStorage = [];
-    this.newCartItem = new ProductState(new Product);
+    //this.newCartItem = new ProductState(new Product, false);
   }
 
 

@@ -1,0 +1,99 @@
+<mat-stepper orientation="vertical" [linear]="!isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Введите ваши данные</ng-template>
+      <mat-form-field>
+        <mat-label>Имя Фамилия</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Номер телефона</mat-label>
+        <input matInput placeholder="Phone number" formControlName="phoneNumber" required>
+      </mat-form-field>
+      <section class="section">
+      <p>
+        <mat-checkbox color="primary" required formControlName="personalData">
+          Подтверждаю обработку персональных данных
+        </mat-checkbox>
+      </p>
+      </section>
+
+      <div>
+        <button mat-button matStepperNext>Далее</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Подтверждение заказа</ng-template>
+      <mat-list-item *ngFor="let p of cartStorage">
+        <span matListItemTitle>{{p.product.name}}</span>
+        <span matListItemLine>{{p.product.attr.color}}, {{p.product.attr.format}}</span>
+        <span> {{p.product.price | currency: '₽ '}} </span>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="cartStorage[0]">Итого: {{totalCost | currency: '₽ '}} </mat-list-item>
+      <div>
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button matStepperNext (click)="onClickShow()">Вперёд</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Подтвердите свою личность</ng-template>
+      <mat-form-field>
+        <mat-label>Снилс</mat-label>
+        <input matInput placeholder="Снилс" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Далее</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Выберите способ доставки</ng-template>
+      <mat-form-field>
+        <mat-label>Способ доставки</mat-label>
+        <mat-select [formControl]="selected">
+          <mat-option value="valid">Самовывоз</mat-option>
+          <mat-option value="valid">Доставка почтой</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Далее</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Оформить заказ</ng-template>
+    <div>
+      <div class="mat-sending-data">
+        <mat-label>Данные, отправляемые на сервер: </mat-label>
+      </div>
+      <div>
+        <button mat-button matStepperNext (click)="MakeOrder()">Оформить</button>
+        <button mat-button matStepperPrevious>Назад</button>
+        <button mat-button (click)="stepper.reset()">Заново</button>
+      </div>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Готово</ng-template>
+    <p>Заказ оформлен!</p>
+    <div>
+      <!-- <button mat-button matStepperPrevious>Назад</button>
+      <button mat-button (click)="stepper.reset()">Заново</button> -->
+    </div>
+  </mat-step>
+
+
+</mat-stepper>
