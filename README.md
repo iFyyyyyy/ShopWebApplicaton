@@ -8,4 +8,4 @@ Simple app for shop operations, using @angular/material.
 
 Как запустить:
 1) Изменения относительно стандартного проекта косаются только папки app.
-2) backend: java (Требуется intellj idea).
+2) backend: java (Требуется intellj idea) gradle-7.6.1.
