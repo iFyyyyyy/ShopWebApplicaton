@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/product", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/", produces = MediaType.APPLICATION_JSON_VALUE)
 @Slf4j
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/getAllProducts")
+    @GetMapping("/getAllProducts/")
     public List<ProductDTO> getAllTasks() {
         List<ProductDTO> list = this.productService.getAllProducts();
         log.info("sending info");

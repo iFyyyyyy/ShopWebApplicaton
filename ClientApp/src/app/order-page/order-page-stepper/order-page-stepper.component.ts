@@ -45,7 +45,7 @@ export class OrderPageStepperComponent implements OnInit {
     {deliveryType: 'Самовывоз'},
     {deliveryType: 'Доставка почтой'},]
 
-  isLinear = true;
+  isLinear = false;
   totalCost: number = 0;
   sendingData: any;
 

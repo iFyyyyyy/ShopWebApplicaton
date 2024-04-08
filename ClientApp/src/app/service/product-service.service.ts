@@ -10,18 +10,17 @@ export class ProductService {
 
   urlJSON: string = '/assets/data-source.json';
 
-  serverUrl: string = `https://localhost:8080/api/product/getAllProducts`;
+  serverUrl: string = 'http://localhost:8080/api/getAllProducts/';
 
   constructor(private http: HttpClient) { }
 
 
-  // getFirstDataJSON(){
+  // getFirstDataJSON(): Observable<Product[]>{
   //   return this.http.get<Product[]>(this.urlJSON).pipe();
   // }
 
   getFirstDataJSON(): Observable<Product[]>{
-    // console.log(this.http.get<Product[]>(`${this.serverUrl}`).subscribe());
-    return this.http.get<Product[]>(`${this.serverUrl}`).pipe();
+    return this.http.get<Product[]>(this.serverUrl);
   }
 
 
