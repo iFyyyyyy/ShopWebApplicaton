@@ -15,13 +15,13 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
 
-  // getFirstDataJSON(): Observable<Product[]>{
-  //   return this.http.get<Product[]>(this.urlJSON).pipe();
-  // }
-
   getFirstDataJSON(): Observable<Product[]>{
-    return this.http.get<Product[]>(this.serverUrl);
+    return this.http.get<Product[]>(this.urlJSON).pipe();
   }
+
+  // getFirstDataJSON(): Observable<Product[]>{
+  //   return this.http.get<Product[]>(this.serverUrl);
+  // }/
 
 
 
